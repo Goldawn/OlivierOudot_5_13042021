@@ -1,0 +1,12 @@
+header {
+  background-color: #F3E9F1;
+}
+
+header img{
+  width: 200px;
+  height: 80px;
+}
+
+header .container>div a {
+  margin-right: auto;
+}
