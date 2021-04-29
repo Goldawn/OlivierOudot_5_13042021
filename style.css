@@ -52,3 +52,22 @@ img {
     -moz-appearance: none;
     appearance: none;
 }
+
+#cart-link {
+    position: relative;
+}
+
+#header-items-quantity {
+    width: 23px;
+    height: 23px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+}

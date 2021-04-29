@@ -1,49 +1,38 @@
+let productId;
 
-// function getParams() {
-    let currentUrl= window.location.search;
-    let searchParams = new URLSearchParams(currentUrl);
-    let productId = searchParams.get("id");
-// }
+getParams();
 
+let singleItem = JSON.parse(loadData(productId))
 
-
-let response;
-
-fetch("http://localhost:3000/api/cameras").then(function(response) {
-    return response.json();
-}).then(function (obj) {
-    console.log(obj)
-
-    for (let i = 0; i < obj.length; i++) {
-        if (obj[i]._id==productId){
-            
-            let singleProductSection = document.getElementById("product-details");
-            
-            const singleProduct = `
-            <div id="product-img" class="w-50">
-            <img src=${obj[i].imageUrl} alt="">
+let singleProductSection = document.getElementById("product-details");
+    
+const singleProduct = `
+    <div id="product-img" class="w-50">
+    <img src=${singleItem.img} alt="">
+    </div>
+    <div id="product-info" class="w-50">
+        <h3>${singleItem.name}</h3>
+        <p>${singleItem.desc}</p>
+        <div id="lenses-all-buttons"></div>
+        <div class="row">
+            <div class="col">
+                <p>${singleItem.price} €</p>
             </div>
-            <div id="product-info" class="w-50">
-                <h3>${obj[i].name}</h3>
-                <p>${obj[i].description}</p>
-                <div class="row">
-                    <div class="col">
-                        <p>${obj[i].price} €</p>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-dark">Ajouter au panier</button>
-                        <input id="${obj[i]._id}" type="number" min="0" max="10" step="1" onchange="setQuantity();">
-                    </div>
-                </div>
+            <div class="col">
+                <button type="button" class="btn btn-dark" onclick="updateQuantity('${productId}');">Ajouter au panier</button>
+                <input id="${productId}" type="number" min="0" max="10" step="1" value="${singleItem.quantity}">
             </div>
-        `;
-        
-        singleProductSection.insertAdjacentHTML('afterbegin', singleProduct);
-        }
-    }
-     
-}).then(function() {
-    refresh();
-}).catch(function (error) {
-    console.error('Something went wrong!')
-})
+        </div>
+    </div>
+    `;
+
+singleProductSection.insertAdjacentHTML('afterbegin', singleProduct); 
+
+singleItem.lenses.forEach(element => {
+
+    const lenseButton = `
+        <button>${element}</button>
+    `
+    
+    document.getElementById("lenses-all-buttons").innerHTML += lenseButton
+});

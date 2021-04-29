@@ -1,3 +1,9 @@
+function getParams() {
+    let currentUrl = window.location.search;
+    let searchParams = new URLSearchParams(currentUrl);
+    productId = searchParams.get("id");
+}
+
 function saveData(key, value) {
     if (localStorage) {
         localStorage.setItem(key, value);
@@ -16,13 +22,13 @@ function loadData(key) {
     }
 }
 
-function setQuantity() {
-    saveData(productId, document.getElementById(productId).value);
-    refresh();
-}
-
-function updateQuantity(productId) {
-    saveData(productId, document.getElementById(productId).value);
+function updateQuantity(x) {
+    let newItem = JSON.parse(loadData(x));
+    console.log(newItem, newItem.quantity)
+    newItem.quantity = document.getElementById(x).value;
+    let stringifiedItem = JSON.stringify(newItem);
+    console.log(stringifiedItem)
+    saveData(x, stringifiedItem);
 }
 
 function refresh() {
@@ -102,6 +108,17 @@ function updateCheckout(e) {
 function removeQuantity(productId) {
     saveData(productId, 0);
     updateCheckout();
+}
+
+function getTotalQuantity() {
+    let allItems = JSON.parse(loadData("allItems"));
+    
+    allItems.forEach( item => {
+        // console.log(JSON.parse(loadData(item)));
+        let myItem = JSON.parse(loadData(item));
+
+        totalQuantity += Number(myItem.quantity);
+    })
 }
 
 // webpack

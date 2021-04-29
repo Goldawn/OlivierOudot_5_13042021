@@ -1,4 +1,6 @@
 let response;
+let itemsIdList = [];
+// localStorage.clear();
 
 fetch("http://localhost:3000/api/cameras").then(function(response) {
     return response.json();
@@ -18,9 +20,29 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                     <a href="single.html?id=${obj[i]._id}" class="btn btn-primary">Voir plus</a>
                 </div>
             </div>
-        `;
-
+        `; 
+        
+        itemsIdList.push(obj[i]._id);
+        saveData("allItems", JSON.stringify(itemsIdList));
+        
+        
+        if (!loadData(obj[i]._id)) {
+            
+            let newCamera = JSON.stringify({
+                lenses:obj[i].lenses,
+                name:obj[i].name,
+                price:obj[i].price,
+                desc:obj[i].description,
+                img:obj[i].imageUrl,
+                quantity:0
+            })
+            
+            saveData(obj[i]._id, newCamera);
+            
+        }       
+        
         productSection.innerHTML += productCard;
+        
     }
 
 }).catch(function (error) {
