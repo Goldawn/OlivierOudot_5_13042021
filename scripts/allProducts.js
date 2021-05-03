@@ -2,10 +2,15 @@ let response;
 let itemsIdList = [];
 // localStorage.clear();
 
+// const getCartFromLocalStorage = JSON.parse(loadData("myCart"));
+
+// if (!getCartFromLocalStorage) {
+//     saveData("myCart", JSON.stringify([]));
+// }
+
 fetch("http://localhost:3000/api/cameras").then(function(response) {
     return response.json();
 }).then(function (obj) {
-    console.log(obj)
     let productSection = document.getElementById("liste-produits");
     
     for (let i = 0; i < obj.length; i++) {
@@ -20,11 +25,11 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                     <a href="single.html?id=${obj[i]._id}" class="btn btn-primary">Voir plus</a>
                 </div>
             </div>
-        `; 
+        `;
         
         itemsIdList.push(obj[i]._id);
         saveData("allItems", JSON.stringify(itemsIdList));
-        
+        // console.log(obj[i])
         
         if (!loadData(obj[i]._id)) {
             
@@ -34,12 +39,13 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                 price:obj[i].price,
                 desc:obj[i].description,
                 img:obj[i].imageUrl,
-                quantity:0
+                id:obj[i]._id
             })
             
+
             saveData(obj[i]._id, newCamera);
             
-        }       
+        }
         
         productSection.innerHTML += productCard;
         

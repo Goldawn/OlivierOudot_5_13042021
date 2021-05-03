@@ -1,4 +1,9 @@
 let productId;
+let checkedButton;
+let itemsInCart = [];
+let lensesAllButtons;
+let buttonIsChecked;
+let newItemInCart;
 
 getParams();
 
@@ -19,8 +24,8 @@ const singleProduct = `
                 <p>${singleItem.price} €</p>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-dark" onclick="updateQuantity('${productId}');">Ajouter au panier</button>
-                <input id="${productId}" type="number" min="0" max="10" step="1" value="${singleItem.quantity}">
+                <input id="${productId}" type="number" min="0" max="10" step="1">
+                <button type="button" class="btn btn-dark" onclick="addToCart();">Ajouter au panier</button>
             </div>
         </div>
     </div>
@@ -29,10 +34,20 @@ const singleProduct = `
 singleProductSection.insertAdjacentHTML('afterbegin', singleProduct); 
 
 singleItem.lenses.forEach(element => {
-
     const lenseButton = `
-        <button>${element}</button>
-    `
-    
-    document.getElementById("lenses-all-buttons").innerHTML += lenseButton
+        <input id="${element}" type="radio" name="lense" checked>${element}</button>
+    `;
+    lensesAllButtons = document.getElementById("lenses-all-buttons");
+    lensesAllButtons.innerHTML += lenseButton;
 });
+
+
+
+// function updateCartItem() {
+//     itemsInCart = JSON.parse(loadData("myCart"));
+//     itemsInCart.forEach( item => {
+//         if (item.id === productId && item.lense === buttonIsChecked) {
+//             item.quantity = document.getElementById(productId).value;
+//         }
+//     })
+// }

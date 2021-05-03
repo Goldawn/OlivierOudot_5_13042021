@@ -2,7 +2,7 @@ let totalQuantity = 0;
 getTotalQuantity()
 
 const header = `
-  
+
     <header class="px-3 py-2">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
