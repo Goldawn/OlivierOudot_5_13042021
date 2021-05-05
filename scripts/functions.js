@@ -33,6 +33,7 @@ function lenseIsChecked() {
     for (let i = 0; i < lensesAllButtons.children.length; i++) {
         if ( lensesAllButtons.children[i].checked === true) {
             buttonIsChecked = lensesAllButtons.children[i].id;
+            // console.log(lensesAllButtons.children[i].id)
             return buttonIsChecked;
         }
     }
@@ -82,6 +83,30 @@ function addToCart() {
     location.reload();
 }
 
+function getCurrentItemQuantity(lense) {
+    lenseIsChecked();
+    console.log("in function")
+    
+    if (localStorage) {
+        if (loadData("myCart")){
+            let myCartItems = JSON.parse(loadData("myCart"))
+            
+            myCartItems.forEach( item => {
+                if (item.id === productId && item.lense === lense) {
+                    console.log("item.quantity -> " + item.quantity)
+                    document.getElementById(productId).value = item.quantity;
+                }
+                else {
+                    document.getElementById(productId).value = 0;
+                }
+            })
+        }
+        else{
+            document.getElementById(productId).value = 0;
+        }
+    }
+}
+
 function getQuantityFromInput(inputId) {
     const inputValue = document.getElementById(inputId).value;
     console.log(inputValue);
@@ -97,7 +122,8 @@ function updateQuantity(itemId, itemLense, inputId) {
             saveData("myCart", JSON.stringify(itemsInCart))
         }
     })
-    displayCheckout();
+    // displayCheckout();
+    location.reload();
 }
 
 function removeQuantity(itemId, itemLense) {
@@ -175,3 +201,6 @@ function getTotalQuantity() {
 //     const newCart = addToCart(JSON.parse(loadData("myCart")), singleItem, "test", (document.getElementById(productId).value))
 //     saveData("myCart", JSON.stringify(newCart));
 // }
+
+
+

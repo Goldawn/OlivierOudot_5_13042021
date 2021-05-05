@@ -71,3 +71,11 @@ img {
     color: white;
     font-weight: 500;
 }
+
+#billing-form {
+    margin-top: 80px;
+}
+
+form span {
+    color: red;
+}

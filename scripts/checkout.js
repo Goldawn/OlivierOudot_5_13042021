@@ -5,7 +5,7 @@ let totalPrice = 0;
 let myCartItems = JSON.parse(loadData("myCart"))
 
 function displayCheckout() {
-    checkoutProductList.innerHTML=null;
+    // checkoutProductList.innerHTML=null;
     myCartItems.forEach( (item, index) => {
         if (item.quantity != 0) {
             
@@ -26,7 +26,7 @@ function displayCheckout() {
     
         totalPrice += Number(item.quantity*item.price);
     })
-        
+
     document.getElementById("total-quantity").innerHTML = totalQuantity;
     
     checkoutProductList.innerHTML += `
@@ -34,7 +34,7 @@ function displayCheckout() {
             <span>Total</span>
             <strong>${totalPrice} €</strong>
         </li>
-        `; 
+        `;
 }
 
 displayCheckout();
