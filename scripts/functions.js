@@ -33,7 +33,6 @@ function lenseIsChecked() {
     for (let i = 0; i < lensesAllButtons.children.length; i++) {
         if ( lensesAllButtons.children[i].checked === true) {
             buttonIsChecked = lensesAllButtons.children[i].id;
-            // console.log(lensesAllButtons.children[i].id)
             return buttonIsChecked;
         }
     }
@@ -84,7 +83,7 @@ function addToCart() {
 }
 
 function getCurrentItemQuantity(lense) {
-    lenseIsChecked();
+
     console.log("in function")
     
     if (localStorage) {

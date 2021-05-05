@@ -37,11 +37,11 @@ singleProductSection.insertAdjacentHTML('afterbegin', singleProduct);
 
 singleItem.lenses.forEach(element => {
     const lenseButton = `
-        <input id="${element}" type="radio" name="lense" onclick="getCurrentItemQuantity('${element}');" checked>${element}</button>
+        <input id="${element}" type="radio" name="lense" onclick="getCurrentItemQuantity('${element}');">${element}</button>
     `;
     lensesAllButtons = document.getElementById("lenses-all-buttons");
     lensesAllButtons.innerHTML += lenseButton;
 });
 
 // lenseIsChecked();
-getCurrentItemQuantity(buttonIsChecked);
+// getCurrentItemQuantity(buttonIsChecked);
