@@ -79,3 +79,10 @@ img {
 form span {
     color: red;
 }
+
+
+@media print {
+    header, .btn {
+        display:none;
+    }
+}

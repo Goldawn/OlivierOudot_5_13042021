@@ -15,7 +15,7 @@ function displayCheckout() {
                     <h6 class="my-0">${item.name} - lense: ${item.lense}</h6>
                     <input id="${index}" type="number" value="${item.quantity}" min="0" max="10" step="1">
                     <button type="button" class="btn btn-dark" onclick="getQuantityFromInput(${index});updateQuantity('${item.id}', '${item.lense}', '${index}');">Mettre à jour le panier</button>
-                    <div onclick="removeQuantity('${item.id}', '${item.lense}');"><p>X</p></div> 
+                    <div onclick="removeQuantity('${item.id}', '${item.lense}');"><p>X</p></div>
                 </div>
                 <span class="text-muted">${item.price} €</span>
             </li>

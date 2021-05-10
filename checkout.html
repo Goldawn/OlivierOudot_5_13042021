@@ -41,10 +41,10 @@
                 <div id="billing-form" class="row">
                     <div class="col-md col-lg">
                     <h4 class="mb-3">Billing address</h4>
-                    <form class="needs-validation" novalidate>
+                    <form id="checkout-form" class="needs-validation" novalidate>
                         <div class="row g-3">
                             <div class="col-sm-6">
-                                <label for="firstName" class="form-label">First name</label>
+                                <label for="firstname" class="form-label">First name</label>
                                 <input type="text" class="form-control" id="firstname" placeholder="" value="" required>
                                 <!-- <div id="invalid-first-name" class="invalid-feedback">
                                     Valid first name is required.
@@ -53,28 +53,31 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <label for="lastName" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                <div class="invalid-feedback">
+                                <label for="lastname" class="form-label">Last name</label>
+                                <input type="text" class="form-control" id="lastname" placeholder="" value="" required>
+                                <!-- <div class="invalid-feedback">
                                     Valid last name is required.
-                                </div>
+                                </div> -->
+                                <span id="invalid-lastname"></span>
                             </div>
 
                             <div class="col-12">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-                                <div class="invalid-feedback">
+                                <label for="mail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="mail" placeholder="you@example.com" required>
+                                <!-- <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
-                                </div>
+                                </div> -->
+                                <span id="invalid-mail"></span>
                             </div>
 
                             <div class="col-12">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                <input type="text" class="form-control" id="adress" placeholder="1234 Main St"
                                     required>
-                                <div class="invalid-feedback">
+                                <!-- <div class="invalid-feedback">
                                     Please enter your shipping address.
-                                </div>
+                                </div> -->
+                                <span id="invalid-adress"></span>
                             </div>
 
                             <div class="col-12">
@@ -96,12 +99,7 @@
         </main>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2017–2021 Company Name</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
+            <p class="mb-1">&copy; 2021 Orinoco</p>
         </footer>
     </div>
 

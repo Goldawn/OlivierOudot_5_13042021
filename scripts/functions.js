@@ -50,36 +50,39 @@ function generateCartItem() {
 
 function addToCart() {
     lenseIsChecked();
-    if (loadData("myCart")){
+    if (buttonIsChecked){
+        if (loadData("myCart")){
         
-        itemsInCart = JSON.parse(loadData("myCart"));
-        console.log(itemsInCart)
-        
-
-        const itemExists = itemsInCart.filter( item => item.id === productId && item.lense === buttonIsChecked)
-        console.log(itemExists)
-        
-        if (itemExists.length > 0){
-
-            itemExists[0].quantity = document.getElementById(productId).value;
-            const allOtherCartItems = itemsInCart.filter(item => !(item.id === productId && item.lense === buttonIsChecked))
-            itemsInCart = [];
-            allOtherCartItems.forEach(item => itemsInCart.push(item));
-            itemsInCart.push(itemExists[0]);
-            saveData("myCart", JSON.stringify(itemsInCart))
-        }
-        else {
+            itemsInCart = JSON.parse(loadData("myCart"));        
+    
+            const itemExists = itemsInCart.filter( item => item.id === productId && item.lense === buttonIsChecked)
+            
+            if (itemExists.length > 0){
+    
+                itemExists[0].quantity = document.getElementById(productId).value;
+                const allOtherCartItems = itemsInCart.filter(item => !(item.id === productId && item.lense === buttonIsChecked))
+                itemsInCart = [];
+                allOtherCartItems.forEach(item => itemsInCart.push(item));
+                itemsInCart.push(itemExists[0]);
+                saveData("myCart", JSON.stringify(itemsInCart))
+            }
+            else {
+                generateCartItem();
+                itemsInCart.push(newItemInCart);
+                saveData("myCart", JSON.stringify(itemsInCart))       
+            }
+    
+        } else {
             generateCartItem();
             itemsInCart.push(newItemInCart);
-            saveData("myCart", JSON.stringify(itemsInCart))       
+            saveData("myCart", JSON.stringify(itemsInCart))
         }
-
-    } else {
-        generateCartItem();
-        itemsInCart.push(newItemInCart);
-        saveData("myCart", JSON.stringify(itemsInCart))
+        location.reload();
+        
     }
-    location.reload();
+    else {
+        window.alert("Veillez choisir une taille de lentille pour ajouter ce produit à votre panier")
+    }
 }
 
 function getCurrentItemQuantity(lense) {
@@ -89,19 +92,17 @@ function getCurrentItemQuantity(lense) {
     if (localStorage) {
         if (loadData("myCart")){
             let myCartItems = JSON.parse(loadData("myCart"))
-            
-            myCartItems.forEach( item => {
-                if (item.id === productId && item.lense === lense) {
-                    console.log("item.quantity -> " + item.quantity)
-                    document.getElementById(productId).value = item.quantity;
-                }
-                else {
-                    document.getElementById(productId).value = 0;
-                }
-            })
+            const item = myCartItems.filter(elem => elem.id === productId && elem.lense === lense)
+            if( item.length > 0) {
+                document.getElementById(productId).value = item[0].quantity;
+            }
+            else {
+                document.getElementById(productId).value = 0;
+            }
         }
         else{
             document.getElementById(productId).value = 0;
+            console.log("else2")
         }
     }
 }

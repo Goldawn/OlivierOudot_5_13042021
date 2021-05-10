@@ -2,11 +2,6 @@ let response;
 let itemsIdList = [];
 // localStorage.clear();
 
-// const getCartFromLocalStorage = JSON.parse(loadData("myCart"));
-
-// if (!getCartFromLocalStorage) {
-//     saveData("myCart", JSON.stringify([]));
-// }
 
 fetch("http://localhost:3000/api/cameras").then(function(response) {
     return response.json();
@@ -26,10 +21,6 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                 </div>
             </div>
         `;
-        
-        // itemsIdList.push(obj[i]._id);
-        // saveData("allItems", JSON.stringify(itemsIdList));
-        // console.log(obj[i])
         
         if (!loadData(obj[i]._id)) {
             

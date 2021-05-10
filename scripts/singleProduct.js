@@ -42,6 +42,3 @@ singleItem.lenses.forEach(element => {
     lensesAllButtons = document.getElementById("lenses-all-buttons");
     lensesAllButtons.innerHTML += lenseButton;
 });
-
-// lenseIsChecked();
-// getCurrentItemQuantity(buttonIsChecked);
