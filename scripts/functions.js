@@ -22,12 +22,12 @@ function loadData(key) {
     }
 }
 
-function refresh() {
-    if (loadData(productId)) {
-        let itemQuantity = loadData(productId);
-        document.getElementById(productId).setAttribute("value", itemQuantity);
-    }
-}
+// function refresh() {
+//     if (loadData(productId)) {
+//         let itemQuantity = loadData(productId);
+//         document.getElementById(productId).setAttribute("value", itemQuantity);
+//     }
+// }
 
 function lenseIsChecked() {
     for (let i = 0; i < lensesAllButtons.children.length; i++) {
@@ -78,7 +78,6 @@ function addToCart() {
             saveData("myCart", JSON.stringify(itemsInCart))
         }
         location.reload();
-        
     }
     else {
         window.alert("Veillez choisir une taille de lentille pour ajouter ce produit à votre panier")

@@ -3,9 +3,11 @@ let itemsIdList = [];
 // localStorage.clear();
 
 
-fetch("http://localhost:3000/api/cameras").then(function(response) {
+// fetch("http://localhost:3000/api/cameras").then(function(response) {
+fetch("scripts/API.json").then(function(response) {
     return response.json();
 }).then(function (obj) {
+    console.log(obj)
     let productSection = document.getElementById("liste-produits");
     
     for (let i = 0; i < obj.length; i++) {
@@ -17,7 +19,7 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                     <h5 class="card-title">${obj[i].name}</h5>
                     <p class="card-text">${obj[i].price} €</p>
                     <p class="card-text">${obj[i].description}</p>
-                    <a href="single.html?id=${obj[i]._id}" class="btn btn-primary">Voir plus</a>
+                    <a href="single.html?id=${obj[i]._id}" class="btn btn-dark">Voir plus</a>
                 </div>
             </div>
         `;

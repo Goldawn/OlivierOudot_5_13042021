@@ -3,10 +3,10 @@ getTotalQuantity()
 
 const header = `
 
-    <header class="px-3 py-2">
+    <header class="px-3 py-2" onclick="window.location.assign('index.html');">
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="file:///F:/Projects/Développement/OpenClassrooms%202021/Projet%205%20-%20Orinoco/Projet%205%20-%20FrontEnd/index.html" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
             <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg> -->
             <img src="15675819263013_image1.png" alt="">
             </a>
