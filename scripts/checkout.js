@@ -5,7 +5,6 @@ let totalPrice = 0;
 let myCartItems = JSON.parse(loadData("myCart"))
 
 function displayCheckout() {
-    // checkoutProductList.innerHTML=null;
     myCartItems.forEach( (item, index) => {
         if (item.quantity != 0) {
             

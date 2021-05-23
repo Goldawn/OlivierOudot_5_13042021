@@ -22,13 +22,6 @@ function loadData(key) {
     }
 }
 
-function refresh() {
-    if (loadData(productId)) {
-        let itemQuantity = loadData(productId);
-        document.getElementById(productId).setAttribute("value", itemQuantity);
-    }
-}
-
 function lenseIsChecked() {
     for (let i = 0; i < lensesAllButtons.children.length; i++) {
         if ( lensesAllButtons.children[i].checked === true) {
@@ -86,8 +79,6 @@ function addToCart() {
 }
 
 function getCurrentItemQuantity(lense) {
-
-    console.log("in function")
     
     if (localStorage) {
         if (loadData("myCart")){
@@ -102,14 +93,12 @@ function getCurrentItemQuantity(lense) {
         }
         else{
             document.getElementById(productId).value = 0;
-            console.log("else2")
         }
     }
 }
 
 function getQuantityFromInput(inputId) {
     const inputValue = document.getElementById(inputId).value;
-    console.log(inputValue);
     return inputValue;
 }
 
@@ -122,7 +111,6 @@ function updateQuantity(itemId, itemLense, inputId) {
             saveData("myCart", JSON.stringify(itemsInCart))
         }
     })
-    // displayCheckout();
     location.reload();
 }
 
@@ -134,7 +122,6 @@ function removeQuantity(itemId, itemLense) {
             saveData("myCart", JSON.stringify(itemsInCart))
         }
     })
-    // displayCheckout();
     location.reload();
 }
 
@@ -146,61 +133,3 @@ function getTotalQuantity() {
         })
     }
 }
-
-// function addToCart(list, item, variation, quantity) {
-//     const existItem = list.some(element => {
-//         return (element.id == item.id)
-
-//     });
-//     if (existItem) {
-//         const itemFromLocalStorage = list.find(e => {
-//             return (e.id == item.id)
-//         });
-//         const existVariant = itemFromLocalStorage.variants.some(element => {
-//             return (element.id == variation)
-//         })
-//             const newItem = {
-//                 id: variation,
-//                 quantity: quantity
-//             }
-//             let listModified = [];
-//             if (existVariant) {
-//                 listModified = itemFromLocalStorage.variants.filter(element => {
-//                     return (element.id !== variation)
-//                 });
-//                 console.log(listModified)
-//             } else {
-//                 listModified = list;
-//             }
-
-//             listModified.push(newItem)
-//             itemFromLocalStorage.variants = listModified;
-//             const newList = list.filter(element => {
-//                 return (element.id !== item.id)
-//             });
-//             newList.push(itemFromLocalStorage)
-//             return newList;
-//     } else {
-//         const newItem = {
-//             id: item.id,
-//             name: item.name,
-//             price: item.price,
-//             description: item.description,
-//             imageUrl: item.imageUrl,
-//             variants: [{
-//                 id: variation,
-//                 quantity: quantity
-//             }]
-//         }
-//         list.push(newItem)
-//         return list
-//     }
-// }
-
-// function handleAddToCart() {
-//     const newCart = addToCart(JSON.parse(loadData("myCart")), singleItem, "test", (document.getElementById(productId).value))
-//     saveData("myCart", JSON.stringify(newCart));
-// }
-
-
-

@@ -1,4 +1,3 @@
-
 (function () {
     "use strict";
 
@@ -35,7 +34,6 @@
 
                     let formInputs = checkoutForm.querySelectorAll("input");
                     formInputs.forEach(input => {
-                        // formDataObject[input.id]=input.value;
                         formDataObject={
                             ...formDataObject,
                             ...(input.value && {
