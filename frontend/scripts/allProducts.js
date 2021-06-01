@@ -21,23 +21,7 @@ fetch("http://localhost:3000/api/cameras").then(function(response) {
                 </div>
             </div>
         `;
-        
-        if (!loadData(obj[i]._id)) {
-            
-            let newCamera = JSON.stringify({
-                lenses:obj[i].lenses,
-                name:obj[i].name,
-                price:obj[i].price,
-                desc:obj[i].description,
-                img:obj[i].imageUrl,
-                id:obj[i]._id
-            })
-            
-
-            saveData(obj[i]._id, newCamera);
-            
-        }
-        
+                
         productSection.innerHTML += productCard;
         
     }

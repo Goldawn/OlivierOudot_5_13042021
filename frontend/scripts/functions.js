@@ -33,10 +33,10 @@ function lenseIsChecked() {
 
 function generateCartItem() {
     newItemInCart = {
-        name:singleItem.name,
+        name:itemName,
         lense:buttonIsChecked,
         quantity: document.getElementById(productId).value,
-        price:singleItem.price,
+        price:itemPrice,
         id:productId
     }
 }
