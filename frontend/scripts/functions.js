@@ -44,33 +44,39 @@ function generateCartItem() {
 function addToCart() {
     lenseIsChecked();
     if (buttonIsChecked){
-        if (loadData("myCart")){
-        
-            itemsInCart = JSON.parse(loadData("myCart"));        
-    
-            const itemExists = itemsInCart.filter( item => item.id === productId && item.lense === buttonIsChecked)
+        if(document.getElementById(productId).value != 0) {
+
+            if (loadData("myCart")){
             
-            if (itemExists.length > 0){
-    
-                itemExists[0].quantity = document.getElementById(productId).value;
-                const allOtherCartItems = itemsInCart.filter(item => !(item.id === productId && item.lense === buttonIsChecked))
-                itemsInCart = [];
-                allOtherCartItems.forEach(item => itemsInCart.push(item));
-                itemsInCart.push(itemExists[0]);
-                saveData("myCart", JSON.stringify(itemsInCart))
-            }
-            else {
+                itemsInCart = JSON.parse(loadData("myCart"));        
+        
+                const itemExists = itemsInCart.filter( item => item.id === productId && item.lense === buttonIsChecked)
+                
+                if (itemExists.length > 0){
+        
+                    itemExists[0].quantity = document.getElementById(productId).value;
+                    const allOtherCartItems = itemsInCart.filter(item => !(item.id === productId && item.lense === buttonIsChecked))
+                    itemsInCart = [];
+                    allOtherCartItems.forEach(item => itemsInCart.push(item));
+                    itemsInCart.push(itemExists[0]);
+                    saveData("myCart", JSON.stringify(itemsInCart))
+                }
+                else {
+                    generateCartItem();
+                    itemsInCart.push(newItemInCart);
+                    saveData("myCart", JSON.stringify(itemsInCart))       
+                }
+        
+            } else {
                 generateCartItem();
                 itemsInCart.push(newItemInCart);
-                saveData("myCart", JSON.stringify(itemsInCart))       
+                saveData("myCart", JSON.stringify(itemsInCart))
             }
-    
-        } else {
-            generateCartItem();
-            itemsInCart.push(newItemInCart);
-            saveData("myCart", JSON.stringify(itemsInCart))
+            location.reload();
         }
-        location.reload();
+        else {
+            window.alert("Veillez choisir la quantité que vous souhaitez ajouter à votre panier")
+        }
         
     }
     else {
