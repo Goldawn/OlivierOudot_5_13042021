@@ -45,7 +45,7 @@
                         <div class="row g-3">
                             <div class="col-sm-6">
                                 <label for="firstname" class="form-label">First name</label>
-                                <input type="text" class="form-control" pattern="/^[a-z ,.'-]+$/i" id="firstname" placeholder="" value="" required>
+                                <input type="text" class="form-control" pattern="([A-Za-z-]{2,})" id="firstname" placeholder="" value="" required>
                                 <!-- <div id="invalid-first-name" class="invalid-feedback">
                                     Valid first name is required.
                                 </div> -->
@@ -54,7 +54,7 @@
 
                             <div class="col-sm-6">
                                 <label for="lastname" class="form-label">Last name</label>
-                                <input type="text" class="form-control" pattern="/^[a-z ,.'-]+$/i" id="lastname" placeholder="" value="" required>
+                                <input type="text" class="form-control" pattern="([A-Za-z-]{2,})" id="lastname" placeholder="" value="" required>
                                 <!-- <div class="invalid-feedback">
                                     Valid last name is required.
                                 </div> -->
